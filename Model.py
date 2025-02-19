@@ -16,6 +16,12 @@ df.dropna(subset=['feature_name']).reset_index(drop=True)
 #  create a new feature by calculating how many minutes left before the disturbance happens
 # find the label with 1, and store the time value at that moment,
 # calculate the minutes within each event, by group the event number, total over 500 hundres unique value
+
+# create the target value feature, calculate the minutes left within each event.
+# 1. store the timestamp with the label value is 1
+# 2. if until the end, there is no more disturbance, take the end_time of this event to calculate the minutes.
+# 3. calculate the minutes left before the disturbance happens within each event
+
 def calculate_minutes_left(group):
     # Sort the group by time
     group = group.sort_values('time')
